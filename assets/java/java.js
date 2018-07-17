@@ -1,18 +1,18 @@
     // Topics variable
-        var bands = ["Ac/Dc", "Linkin Park", "Guns and Roses", "Rolling Stones", "Culture Club", "Toto", "The Who"];   
+        var cats = ["Kitten", "black cat", "fat cat", "kitten mittens"];   
         function renderButtons() {
         // Deleting the gifs prior to adding new gifs
         $("#buttons-view").empty();
         // Looping through the array of bands
-        for (var i = 0; i < bands.length; i++) {
+        for (var i = 0; i < cats.length; i++) {
         // Then dynamicaly generating buttons for each band in the array
         var a = $("<button>");
         // Adding a class of band to our button
-        a.addClass("band");
+        a.addClass("cat");
         // Adding a data-attribute
-        a.attr("data-name", bands[i]);
+        a.attr("data-name", cats[i]);
         // Providing the initial button text
-        a.text(bands[i]);
+        a.text(cats[i]);
         // Adding the button to the buttons-view div
         $("#buttons-view").append(a);
         }
@@ -23,11 +23,11 @@
         event.preventDefault();
         userInput = $('#gif-input').val().trim();
         console.log(userInput);
-        bands.push(userInput);
-        console.log(bands);
+        cats.push(userInput);
+        console.log(cats);
         renderButtons();
         })
-        $(document).on('click', ".band", function(){
+        $(document).on('click', ".cat", function(){
  		var x = $(this).data("name");
  		console.log(x);
 
@@ -47,22 +47,22 @@
         // Looping through each result item
         for(var i=0; i<response.data.length;i++){
         // Creating and storing a div tag
-             var bandDiv = $("<div>");
+             var catDiv = $("<div>");
         // Creating a paragraph tag with the result item's rating
              var p = $("<p>").text("Rating: " + response.data[i].rating);  
 
         // Creating and storing an image tag
-             var bandImage = $("<img>");
-             bandImage.attr('src',response.data[i].images.fixed_height_still.url.replace(/^http:\/\//i, 'https://'));
- 			       bandImage.attr('data-still',response.data[i].images.fixed_height_still.url.replace(/^http:\/\//i, 'https://'));
- 			       bandImage.attr('data-animate',response.data[i].images.fixed_height.url.replace(/^http:\/\//i, 'https://'));
- 			       bandImage.attr('data-state',"still");
- 			    	 bandImage.addClass("gif");
- 			     	 bandDiv.append(p);
-             bandDiv.append(bandImage);
+             var catImage = $("<img>");
+             catImage.attr('src',response.data[i].images.fixed_height_still.url.replace(/^http:\/\//i, 'https://'));
+ 			      catImage.attr('data-still',response.data[i].images.fixed_height_still.url.replace(/^http:\/\//i, 'https://'));
+ 			      catImage.attr('data-animate',response.data[i].images.fixed_height.url.replace(/^http:\/\//i, 'https://'));
+ 			      catImage.attr('data-state',"still");
+ 			    	catImage.addClass("gif");
+ 			     	 catDiv.append(p);
+             catDiv.append(catImage);
      
         // Prependng the topicDiv to the HTML page in the "#gifs-appear-here" div      
-             $("#gifs-appear-here").prepend(bandDiv);
+             $("#gifs-appear-here").prepend(catDiv);
 
      //here is our on click function to start and stop the gifs once loaded onto the page
  				
